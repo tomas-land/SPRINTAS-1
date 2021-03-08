@@ -1,12 +1,14 @@
 Version 1.0.0
 
 ---
-##File Browser
+# File Browser
 
 
 Web based File Browser in PHP for managing files and folders.
 
-##Features
+---
+
+## Features
 
 * Login/ logout 
 * Create directories
@@ -14,7 +16,7 @@ Web based File Browser in PHP for managing files and folders.
 * Delete files
 
 
-##Installation
+## Installation
 
 * Download ZIP folder
 * Place in local server root folder
