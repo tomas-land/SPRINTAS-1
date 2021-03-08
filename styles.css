@@ -1,0 +1,61 @@
+body{
+    background-color: #4e6988;
+}
+a {
+    text-decoration: none !important;
+}
+tbody{
+    background-color: #96b0d3;
+    
+}
+table{
+    box-shadow: 20px 22px 31px 3px rgba(78,80,128,1);
+
+}
+table a{
+color: mintcream;
+}
+#login{
+    color: rgb(220, 229, 241);
+    
+}
+.btn{
+background-color: rgb(220, 229, 241);
+color: rgb(19, 127, 177);
+
+}
+
+#action-td{
+    
+   
+   display: flex;
+   justify-content: center;
+    
+}
+
+#action-td button{
+    margin-left: 20px;
+}
+.create_upload{
+   width: 80%;
+ display: flex;
+ justify-content: space-between;
+ margin: auto;
+  
+}
+
+input[type="file"] {
+    padding:5px;
+    background-color :rgb(150, 176, 211);
+  border-radius: 5px;
+  border: 0px solid;
+  outline: none;
+  }
+.create_dir{
+    width: 270px;
+    padding:8px;
+    background-color :rgb(150, 176, 211);
+  border-radius: 5px;
+  border: 0px solid;
+  outline: none;
+}
