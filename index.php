@@ -14,7 +14,7 @@ if (isset($_POST['delete'])) {
 
 // CREATE FOLDER
 if (isset($_POST['create'])) {
-    $new_folder = $path . $_POST['create'];
+    $new_folder = $_GET["path"] . $_POST['create'];
     if (is_dir($new_folder)) {
         echo 'Directory exist';
     } else {
@@ -135,12 +135,10 @@ if (isset($_SESSION['counter'])) {
 
         print('<span class="mt-5 col-10 d-flex justify-content-end " >Click here to  &nbsp <a href="index.php?action=logout" style="color:#96b0d3">  LOGOUT.</a> </span>');
 
-
-
         $path = './' . $_GET['path'];
         $files_and_dirs = scandir($path);
-        print('<div class="d-flex justify-content-end col-2 mt-1"><button class="btn"><a href="' . dirname($_GET['path']) . '">back</a></button></div>
-'); ?>
+        print('<div class="d-flex justify-content-end col-2 mt-1"><button class="btn"><a href="'.dirname($_GET['path']) . '">back</a></button></div>'); 
+        ?>
 
 
         <div class="container col-10 mt-2">
@@ -156,18 +154,20 @@ if (isset($_SESSION['counter'])) {
                     foreach ($files_and_dirs as $fnd) {
                         if ($fnd != ".." and $fnd != ".") {
                             print('<tr>');
-                            print('<td>' . (is_dir($fnd) ? "Directory" : "File") . '</td>');
+                            print('<td>' . (is_dir($_GET["path"].$fnd) ? "Directory" : "File") . '</td>');
                             print('<td>' .
-                                '<a href="' . (is_dir($fnd) ? ((isset($_GET['path'])) ? $_SERVER['REQUEST_URI'] . '/' : $_SERVER['REQUEST_URI'] . '?path=' . $fnd . '/') :  $fnd) . '">' . $fnd . '</a></td>');
+                                '<a href="' . (is_dir($_GET["path"].$fnd) ? ((isset($_GET['path'])) ? $_SERVER['REQUEST_URI']. $fnd . '/' : $_SERVER['REQUEST_URI'] . '?path=' . $fnd . '/') 
+                                                                                                                                        : $_GET["path"] . $fnd) . '">' . $fnd . '</a></td>');
                             print('<td id="action-td">');
+
                             if (is_file($_GET['path'] . $fnd)) {
                                 print('<form action="" method="POST">
-                            <input type="hidden" name="delete" value="' . $fnd . '">
+                            <input type="hidden" name="delete" value="' . $_GET["path"] . $fnd . '">
                             <input type="submit" class="btn btn-danger" value="delete">
                           </form>
 
                           <form action="" method="POST">
-                            <input type="hidden" name="download" value="' . $fnd . '">
+                            <input type="hidden" name="download" value="' . $_GET["path"]. $fnd . '">
                             <button class="btn btn-warning" type="submit">Download</button>
                           </form>');
                             }
@@ -176,7 +176,7 @@ if (isset($_SESSION['counter'])) {
                         }
                     }
                     print("</table></div><br>");
-
+                  
                     ?>
 
 
@@ -213,7 +213,7 @@ if (isset($_SESSION['counter'])) {
                     <div class="text-center">YUO HAVE VISITED <?php print($_SESSION['counter']) ?></div>
                 <?php } else { 
                    
-                    
+                   header('Location: login.php');
                     ?>
 
 
